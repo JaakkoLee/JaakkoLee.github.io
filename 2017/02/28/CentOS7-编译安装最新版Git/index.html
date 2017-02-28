@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jaakkolee.github.io">
-  <title>Tag: LAMP,PHP,CentOS,MySQL,Apache | Jaakko的博客</title>
+  <title>CentOS7 编译安装 Git最新版本 | Jaakko的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="平顶山学院12级，网络工程师。PHP开发工程师，擅长各项前端技能，深入研究后端开发与前端交互性能。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jaakko的博客">
-<meta property="og:url" content="https://jaakkolee.github.io/tags/LAMP-PHP-CentOS-MySQL-Apache/index.html">
+  <meta name="description" content="CentOS系统yum库里面的Git版本往往更新不及时，而每一个Git版本的更新都会有很多改变，所以为了使用最新的版本，我只能通过编译安装，这个安装流程是我通过多次测试后总结出来的最简便的编译安装流程，避免了期间可以遇到的各种错误。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7 编译安装 Git最新版本">
+<meta property="og:url" content="https://jaakkolee.github.io/2017/02/28/CentOS7-编译安装最新版Git/index.html">
 <meta property="og:site_name" content="Jaakko的博客">
-<meta property="og:description" content="平顶山学院12级，网络工程师。PHP开发工程师，擅长各项前端技能，深入研究后端开发与前端交互性能。">
+<meta property="og:description" content="CentOS系统yum库里面的Git版本往往更新不及时，而每一个Git版本的更新都会有很多改变，所以为了使用最新的版本，我只能通过编译安装，这个安装流程是我通过多次测试后总结出来的最简便的编译安装流程，避免了期间可以遇到的各种错误。">
+<meta property="og:updated_time" content="2017-02-28T12:12:48.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jaakko的博客">
-<meta name="twitter:description" content="平顶山学院12级，网络工程师。PHP开发工程师，擅长各项前端技能，深入研究后端开发与前端交互性能。">
+<meta name="twitter:title" content="CentOS7 编译安装 Git最新版本">
+<meta name="twitter:description" content="CentOS系统yum库里面的Git版本往往更新不及时，而每一个Git版本的更新都会有很多改变，所以为了使用最新的版本，我只能通过编译安装，这个安装流程是我通过多次测试后总结出来的最简便的编译安装流程，避免了期间可以遇到的各种错误。">
   
     <link rel="alternative" href="/atom.xml" title="Jaakko的博客" type="application/atom+xml">
   
@@ -138,60 +139,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CentOS7-编译安装最新版Git" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/27/CentOS7-安装LAMP/" class="archive-article-date">
-  	<time datetime="2017-02-27T05:39:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/27/CentOS7-安装LAMP/">CentOS7 安装LAMP</a>
+    <h1 class="article-title" itemprop="name">
+      CentOS7 编译安装 Git最新版本
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/02/28/CentOS7-编译安装最新版Git/" class="archive-article-date">
+  	<time datetime="2017-02-28T12:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  CentOS系统yum库里面的Git版本往往更新不及时，而每一个Git版本的更新都会有很多改变，所以为了使用最新的版本，我只能通过编译安装，这个安装流程是我通过多次测试后总结出来的最简便的编译安装流程，避免了期间可以遇到的各种错误。<br>  <a id="more"></a></p>
+<ol>
+<li>首先安装Git需要的一些依赖</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# yum install gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel</div></pre></td></tr></table></figure>
+<ol>
+<li>下载git最新版源码<br>不要下载带有-rc的，因为它代表了一个候选发布版本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# wget https://Github.com/Git/Git/archive/v2.12.0.tar.gz</div></pre></td></tr></table></figure>
+<ol>
+<li>解压</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# tar xzvf v2.12.0.tar.gz</div></pre></td></tr></table></figure>
+<ol>
+<li>进入解压后的git目录，对即将安装的软件进行配置，检查当前的环境是否满足要安装软件的依赖关系</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# cd git-2.12.0</div><div class="line">[root@localhost git-2.12.0]# ./configure prefix=/usr/local/git</div></pre></td></tr></table></figure>
+<ol>
+<li>make &amp; make install</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost git-2.12.0]# make prefix=/usr/local/git all</div><div class="line">[root@localhost git-2.12.0]# make prefix=/usr/local/git install</div></pre></td></tr></table></figure>
+<ol>
+<li>这时候Git已经成功安装到 /usr/local/git 目录下，但是你查看Git版本会发现此时版本还是1.8.3的，那是因为我们还没有修改环境变量</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# git --version</div><div class="line">git version 1.8.3</div></pre></td></tr></table></figure>
+<ol>
+<li>修改环境变量,在 /etc/profile 文件中的最后加入下面一句话</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# vim /etc/profile</div><div class="line">export PATH=/usr/local/git/bin:$PATH</div><div class="line">[root@localhost ~]# source /etc/profile</div></pre></td></tr></table></figure>
+<ol>
+<li>此时Git已经安装成功<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# git --version</div><div class="line">git version 2.12.0</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LAMP,PHP,CentOS,MySQL,Apache</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Linux,CentOS,Git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://jaakkolee.github.io/2017/02/28/CentOS7-编译安装最新版Git/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/02/27/CentOS7-安装LAMP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CentOS7 安装LAMP</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -214,9 +341,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
