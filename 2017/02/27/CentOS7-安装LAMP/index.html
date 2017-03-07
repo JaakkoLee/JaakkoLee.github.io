@@ -36,7 +36,7 @@
 设置Apache为开机启动
 
 [r">
-<meta property="og:updated_time" content="2017-02-27T05:46:58.307Z">
+<meta property="og:updated_time" content="2017-03-07T07:03:24.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7 安装LAMP">
 <meta name="twitter:description" content="1. Apache 安装Apache 的软件包名称叫做httpd，因此安装Apache，使用以下命令
@@ -233,17 +233,17 @@ Hint: Some lines were ellipsized, use -l to show in full.
 </code></pre><p>如以上结果所示， ‘loaded’项 中的 ‘enabled’ 表示httpd服务已经设为开机启动；’Active’项中的’active(running)’则表示httpd服务正在运行中。  </p>
 <p>由于HTTP协议使用TCP端口80，因此防火墙要放通TCP端口80:</p>
 <blockquote>
-<p>[root@localhost ~]# firewall-cmd –zone=public –add-port=80/tcp –permanent   </p>
+<p>[root@localhost ~]# firewall-cmd --zone=public --add-port=80/tcp --permanent   </p>
 </blockquote>
 <pre><code>success 
 </code></pre><p>重启防火墙使更改立即生效</p>
 <blockquote>
-<p>[root@localhost ~]# firewall-cmd –reload  </p>
+<p>[root@localhost ~]# firewall-cmd --reload  </p>
 </blockquote>
 <pre><code>success
 </code></pre><p>查询防火墙当前开放端口，检查配置是否成功  </p>
 <blockquote>
-<p>[root@localhost ~]# firewall-cmd –list-all  </p>
+<p>[root@localhost ~]# firewall-cmd --list-all  </p>
 </blockquote>
 <pre><code>public (default, active)
 interfaces: eno16777736  
@@ -425,12 +425,12 @@ memory_limit = 128M                                     //PHP可用的最大内�
 </blockquote>
 <p>如果需要远程访问数据库，需要防火墙放通TCP端口3306</p>
 <blockquote>
-<p>[root@localhost ~]# firewall-cmd –zone=public –add-port=3306/tcp –permanent</p>
+<p>[root@localhost ~]# firewall-cmd --zone=public --add-port=3306/tcp --permanent</p>
 </blockquote>
 <pre><code>success
 </code></pre><p>重启防火墙使更改立即生效</p>
 <blockquote>
-<p>[root@localhost ~]# firewall-cmd –reload</p>
+<p>[root@localhost ~]# firewall-cmd --reload</p>
 </blockquote>
 <pre><code>success
 </code></pre><p>检查mysqld服务状态</p>
@@ -734,11 +734,11 @@ memory_limit = 128M                                     //PHP可用的最大内�
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LAMP,PHP,CentOS,MySQL,Apache</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linux,CentOS,Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Linux,CentOS,Git</a>
+                <a href="javascript:void(0)" class="js-tag color4">LAMP,PHP,CentOS,MySQL,Apache</a>
               </li>
             
             <div class="clearfix"></div>
