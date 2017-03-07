@@ -36,7 +36,7 @@
 设置Apache为开机启动
 
 [r">
-<meta property="og:updated_time" content="2017-03-07T07:12:25.150Z">
+<meta property="og:updated_time" content="2017-03-07T08:07:59.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7 安装LAMP">
 <meta name="twitter:description" content="1. Apache 安装Apache 的软件包名称叫做httpd，因此安装Apache，使用以下命令
@@ -479,7 +479,7 @@ memory_limit = 128M                                     //PHP可用的最大内�
 </blockquote>
 <p>允许使用root远程访问数据库</p>
 <blockquote>
-<p>1.设置root远程访问权限<br>　mysql&gt; use mysql;<br>　mysql&gt; update user set host=’%’ where host=’localhost’ and user=’root’;<br>　2.授权<br>　mysql&gt; grant all privileges on <em>.</em> to ‘root’@’%’ identified by ‘密码’;</p>
+<p>1.设置root远程访问权限<br>　mysql&gt; use mysql;<br>　mysql&gt; update user set host=’%’ where host=’localhost’ and user=’root’;<br>　2.授权<br>　mysql&gt; grant all privileges on *.* to ‘root’@’%’ identified by ‘密码’;</p>
 </blockquote>
 <p>刷新系统权限表：</p>
 <blockquote>
